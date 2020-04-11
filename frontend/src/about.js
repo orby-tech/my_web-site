@@ -1,0 +1,79 @@
+import React, { Component } from 'react';
+import { Route } from 'react-router-dom';
+
+import Button from 'react-bootstrap/Button';
+
+
+
+class About extends Component{
+	  constructor(props) {
+	  super(props);
+	  this.infoClick = this.infoClick.bind(this);
+ 	  this.contactsClick = this.contactsClick.bind(this);
+
+	    this.state = {
+      infoCollapsed: false,
+      contactsCollapsed: false
+    }
+    };
+
+
+    infoClick() {
+    	this.setState({infoCollapsed: !this.state.infoCollapsed});
+    };
+
+    contactsClick() {
+    	this.setState({contactsCollapsed: !this.state.contactsCollapsed});
+    };
+
+	render(){
+		const infoStyle = this.state.infoCollapsed ? 'moreInformation show' : 'moreInformation unShow';
+  	const contactsStyle = this.state.contactsCollapsed ? 'moreInformation show' : 'moreInformation unShow';
+
+		return(
+			<div className="container">
+
+				<h1> About me and this progect </h1>
+
+
+				<h4> It's progect is site-portfolio</h4>
+				<p> 
+						I testing my ideas and fitces in this web-site.
+						It's created with React and Django-REST.
+				</p>
+				<Button  className="" variant='outline-primary' onClick={this.infoClick}>
+					More information
+      	</Button>
+      	<div className={infoStyle}>
+      		<ul>
+      			<li>Back-end: Python3, Django-REST</li>
+      			<li>Front-end: with React</li>
+
+      		</ul>
+      	</div>
+
+				<hr/>
+
+				<h4> Me </h4>
+				<p> 
+						I like work, I can create. <br/>						
+						More than three years ago, I started learning C#, but it was unsuccessful. <br/><br/>
+						Now I work with Python and React
+				</p>
+				<Button  className="" variant='outline-primary' onClick={this.contactsClick}>
+					Contacts 
+      	</Button>
+      	<div className={contactsStyle}>
+      		<ul>
+      			<li><a href="https://t.me/orby_tech"> Telegram: </a> @orby_tech </li>
+
+      			<li><a href="mailto:tibode495@gmail.com"> e-mail: </a> tibode495@gmail.com </li>
+
+      		</ul>
+      	</div>
+
+			</div>
+		);
+	}
+}
+export default About;

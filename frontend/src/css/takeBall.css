@@ -1,0 +1,29 @@
+.area-of-ball {
+	position: fixed;
+	top: 10px;
+	left: 10px;
+	width: 300px;
+	height: 300px;
+	border-radius: 100%;
+	border: 3px solid blue;
+	position:relative;
+	float: left;
+}
+.ball {
+	width: 30px;
+	height: 30px;
+	border-radius: 100%;
+	border: 15px solid blue;
+	position: absolute;
+	bottom: 135px;
+	left: 135px;
+	float: left;
+
+}
+.area-info {
+	float: left;
+	padding: 10px;
+	height: 41px;
+	width: 150px;
+	border: 1px solid black;
+}

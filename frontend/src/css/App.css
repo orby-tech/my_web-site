@@ -1,0 +1,159 @@
+@import  'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css';
+
+ul{
+  list-style-type: none;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.collapse{
+  top: -100vh;
+}
+.container{
+  padding-top: 20px;
+  padding-left: 20px;
+  max-width: 600px;
+}
+.contents{
+  padding-left: 60px;
+}
+
+@keyframes collapse {
+  from{
+  display: none;
+  }
+  to{
+  display: block;
+
+  }
+}
+
+.show{
+  animation: collapse 1s;
+  animation-duration: 1200ms;
+
+}
+
+.unShow{ 
+  display: none;
+
+}
+.menu-navbar {
+  font-size: 20px;
+  color:#696969;
+  clear: none;
+  float: left;
+  width: 100%;
+}
+h1,h4{
+  text-align: center;
+}
+.navbar-toggler {
+  position: absolute;
+  right: 10px;
+  top: 8px;
+}
+
+
+.login {
+  position: absolute;
+  right: 20px;
+  top: 60px;
+  margin-right: -80px;
+  border: 0px;
+}
+
+.sigLogin {
+  top: 95px;
+}
+
+.auth_open {
+
+}
+
+.auth_close {
+  display: none;
+}
+.sign_log_h1 {
+  padding-left: 6px;
+}
+.sign_log_button {
+  margin-left: 6px;
+  margin-top: 6px;
+}
+.nav_row {
+  width: 60px;
+  height: 60px;
+  background-size: cover;
+  margin-right: -80px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 400ms;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.line {
+  fill:none;
+  transition: stroke-dasharray 400ms, stroke-dashoffset 1000ms;
+  stroke:#000;
+  stroke-width:5.5;
+  stroke-linecap:round;
+}
+
+.nav_row_in .top {
+  stroke-dasharray: 40 172;
+}
+.nav_row_in .middle {
+  stroke-dasharray: 40 111;
+}
+.nav_row_in .bottom {
+  stroke-dasharray: 40 172;
+}
+.nav_row_in.active .top {
+  stroke-dashoffset: -132px;
+}
+.nav_row_in.active .middle {
+  stroke-dashoffset: -71px;
+}
+.nav_row_in.active .bottom {
+  stroke-dashoffset: -132px;
+}
+
+
+.moreInformation {
+  margin-top: 10px;
+}

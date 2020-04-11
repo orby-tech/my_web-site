@@ -1,0 +1,33 @@
+		.calculator{
+			max-width: 400px;
+			min-width: 320px;
+		}
+		.block_of_buttons {
+			height: auto;
+			border: 1px solid #FFC0CB;
+		}
+		.display {
+			height: 50px;
+			width: 100%;
+		}
+		
+		.dis {
+			border: 1px solid #FFC0CB;
+			width: 100%;
+			height: 90%;
+		}
+		#button1 {
+			width: 25%;
+			height: 50px;
+			border: 0px;
+			float: left;   			
+		}
+    #button {
+    	border: 0px;
+			width: 100%;
+			height: 50px;
+			float: left;
+		}
+		#button1:hover, #button:hover{
+			background-color: #C0C0C0;
+		}
