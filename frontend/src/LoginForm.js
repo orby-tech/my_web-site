@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button';
 
 class LoginForm extends React.Component {
   state = {
-    username: '',
+    email: '',
     password: ''
   };
 
@@ -22,11 +22,11 @@ class LoginForm extends React.Component {
     return (
       <>
         <h4>Log In</h4>
-        <label htmlFor="username">Username</label>
+        <label htmlFor="username">email</label>
         <input
           type="text"
-          name="username"
-          value={this.state.username}
+          name="email"
+          value={this.state.email}
           onChange={this.handle_change}
         />
         <label htmlFor="password">Password</label>

@@ -18,59 +18,62 @@ class App extends Component {
 
   componentDidMount() {
     if (this.state.logged_in) {
-      fetch('http://localhost:8000/core/current_user/', {
+      fetch('http://127.0.0.1:8000/user/obtain_token/', {
         headers: {
-          Authorization: `JWT ${localStorage.getItem('token')}`
+          Authorization: `Bearer ${localStorage.getItem('token')}`
         }
       })
         .then(res => res.json())
         .then(json => {
-          this.setState({ username: json.username });
+          this.setState({ username: json.name });
         });
     }
   }
 
   handle_login = (e, data) => {
     e.preventDefault();
-    fetch('http://localhost:8000/token-auth/', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data)
-    })
-      .then(res => res.json())
-      .then(json => {
-        localStorage.setItem('token', json.token);
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
 
+    var raw = JSON.stringify(data);
+    var requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: raw,
+      redirect: 'follow'
+    };
+    fetch('http://127.0.0.1:8000/user/obtain_token/', requestOptions)
+      .then(response => response.json())
+      .then(result => {
+        console.log(result)
+        localStorage.setItem('token', result.token);
         this.setState({
           logged_in: true,
           displayed_form: '',
-          username: json.user.username
+          username: result.name
         });
         localStorage.setItem('username', this.state.username);
-
-      });
+      })
+      .catch(error => console.log('error', error));
+      
   };
 
   handle_signup = (e, data) => {
     e.preventDefault();
-    fetch('http://localhost:8000/core/users/', {
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    var raw = JSON.stringify(data);
+    var requestOptions = {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data)
-    })
-      .then(res => res.json())
-      .then(json => {
-        localStorage.setItem('token', json.token);
-        this.setState({
-          logged_in: true,
-          displayed_form: '',
-          username: json.username
-        });
-      });
+      headers: myHeaders,
+      body: raw,
+      redirect: 'follow'
+    };
+    fetch('http://127.0.0.1:8000/user/create/', requestOptions)
+      .then(response => response.text())
+      .then(result => {console.log(result)})
+      .catch(error => console.log('error', error));
   };
 
   handle_logout = () => {

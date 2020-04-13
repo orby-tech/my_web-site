@@ -48,6 +48,8 @@ class About extends Component{
       		<ul>
       			<li>Back-end: Python3, Django-REST</li>
       			<li>Front-end: with React</li>
+                <li>API: axios</li>
+
 
       		</ul>
       	</div>
