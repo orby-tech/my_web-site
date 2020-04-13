@@ -8,18 +8,7 @@ class SignupForm extends React.Component {
     password: '',
     first_name: ''
   };
-  signup(e){
-    try {
-      if(this.state.first_name) {
-        this.props.handle_signup(e, this.state)
-      
-      }else{
-        alert("Empty Username")
-      }
-    } catch(err) {
-      alert("Empty Username")
-    }
-  }
+
   handle_change = e => {
     const name = e.target.name;
     const value = e.target.value;
@@ -29,7 +18,19 @@ class SignupForm extends React.Component {
       return newState;
     });
   };
-
+  signup = e => {
+    try {
+      if(this.state.first_name) {
+        this.props.handle_signup(e, this.state)
+      
+      } else{
+        alert("Empty Username1")
+      }
+    } catch(err) {
+      alert("Empty Username2")
+      console.log(err)
+    }
+  }
   render() {
     return (
       <>
