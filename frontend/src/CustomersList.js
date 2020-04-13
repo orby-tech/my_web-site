@@ -68,7 +68,7 @@ class  CustomersList  extends  Component {
                         <td>{c.description}</td>
                         <td>
                         <button  onClick={(e)=>  this.handleDelete(e,c.pk) }> Delete</button>
-                        <a  href={"/customers/customer/" + c.pk}> Update</a>
+                        <a  href={"/utils/customers/customer/" + c.pk}> Update</a>
                         </td>
                        </tr>)} 
                     </tbody>

@@ -22,17 +22,7 @@ export default class CustomersService{
     }
     createCustomer(customer){
         const url = `${API_URL}/api/customers/`;
-        console.log(axios.post(url,token,customer))
-        return fetch('http://localhost:8000/core/current_user/', {
-        method: 'POST',
-
-        headers: {
-          Authorization: `JWT ${localStorage.getItem('token')}`
-        },
-        data: {
-            customer
-        }
-      })
+        return axios.post(url, customer);
     }
     updateCustomer(customer){
         const url = `${API_URL}/api/customers/${customer.pk}`;
