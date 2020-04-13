@@ -8,7 +8,18 @@ class SignupForm extends React.Component {
     password: '',
     first_name: ''
   };
-
+  signup(e){
+    try {
+      if(this.state.first_name) {
+        this.props.handle_signup(e, this.state)
+      
+      }else{
+        alert("Empty Username")
+      }
+    } catch(err) {
+      alert("Empty Username")
+    }
+  }
   handle_change = e => {
     const name = e.target.name;
     const value = e.target.value;
@@ -44,7 +55,8 @@ class SignupForm extends React.Component {
           value={this.state.password}
           onChange={this.handle_change}
         />
-        <Button className="sign_log_button" variant='primary' onClick={e => this.props.handle_signup(e, this.state)}>
+        <Button className="sign_log_button" variant='primary' 
+          onClick={this.signup}>
           Sign up
         </Button>
       </>

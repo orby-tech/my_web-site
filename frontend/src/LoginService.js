@@ -74,8 +74,20 @@ class App extends Component {
       redirect: 'follow'
     };
     fetch('http://127.0.0.1:8000/user/create/', requestOptions)
-      .then(response => response.text())
-      .then(result => {console.log(result)})
+      .then(response => response.json())
+      .then(result => {
+        if(result.email){
+          if (result.email[0] === "Enter a valid email address." || result.email[0] === "This field may not be blank."){
+
+            alert("Enter a valid email address.")
+          } 
+        }else if (result.password[0] == "This field may not be blank."){
+          alert("Password may not be blank.")
+        } else{
+        console.log(result)
+        }
+
+    })
       .catch(error => console.log('error', error));
   };
 
