@@ -45,16 +45,19 @@ class App extends Component {
     fetch('http://127.0.0.1:8000/user/obtain_token/', requestOptions)
       .then(response => response.json())
       .then(result => {
-        console.log(result)
-        localStorage.setItem('token', result.token);
-        this.setState({
-          logged_in: true,
-          displayed_form: '',
-          username: result.name
-        });
-        localStorage.setItem('username', this.state.username);
+        if (result.token){
+          localStorage.setItem('token', result.token);
+          this.setState({
+            logged_in: true,
+            displayed_form: '',
+            username: result.name
+          });
+          localStorage.setItem('username', this.state.username);
+        } 
       })
-      .catch(error => console.log('error', error));
+      .catch(error => {
+        alert("Ups, may be uncorrect form?")
+      });
       
   };
 
