@@ -4,63 +4,68 @@ import { ThemeProvider } from 'styled-components';
 import PropTypes from 'prop-types';
 
 
-
-class Review extends Component {
+class Answer extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-  		loading: true,
+      loading: true,
       result: '',
       trigger: false,
     };
-    this.triggetNext = this.triggetNext.bind(this);
-
   }
+    commponentWillMount() {
+      const { steps } = this.props;
 
-    componentWillMount() {
-    const self = this;
-    const { steps } = this.props;
-    const search = steps.search.value;
-    
-    function readyStateChange() {
-      if (this.readyState === 4) {
-        const data = JSON.parse(this.responseText);
-        const bindings = data.results.bindings;
-        if (bindings && bindings.length > 0) {
-          self.setState({ loading: false, result: bindings[0].comment.value });
-        } else {
-          self.setState({ loading: false, result: 'Not found.' });
-        }
-      }
-    }
-  }
+      var myHeaders = new Headers();
 
-triggetNext() {
-    this.setState({ trigger: true }, () => {
-      this.props.triggerNextStep();
-    });
-  }
+      myHeaders.append("Content-Type", "application/json");
 
-  render() {
-    const { trigger, loading, result } = this.state;
+      var raw = JSON.stringify({"text": steps.message.value});
 
-    return (
-      <>
-      </>
-    );
-  }
+      var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
+      };
+
+      fetch("http://127.0.0.1:8000/sunny/", requestOptions)
+        .then(response => response.text())
+        .then(result => {
+          let answer =  result.substr(2, result.length - 4);
+          this.setState( {answer: answer})
+
+          console.log(answer);
+          return answer;
+        })
+        .catch(error => console.log('error', error));
+
+    };
+
+
+    render() {
+      const { trigger, loading, result } = this.state;
+
+      return(
+        <div>
+           { loading ? "sdf": result }
+        </div>
+        );
+     }
 }
 
-Review.propTypes = {
-  steps: PropTypes.object,
-};
-
-Review.defaultProps = {
-  steps: undefined,
-};
 
 class RobotSunny extends Component {
+    constructor(props) {
+    super(props);
+
+    this.state = {
+      answer: 'hello',
+      request: '',
+    };
+
+  }
 
 	render() {
 		return(
@@ -80,7 +85,8 @@ class RobotSunny extends Component {
           },
           {
           	id: 'next',
-          	message: 'sdf',
+          	component: <Answer />,
+
           	trigger: 'message',
           }
 				]}
