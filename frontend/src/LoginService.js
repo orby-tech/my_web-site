@@ -18,7 +18,7 @@ class App extends Component {
 
   componentDidMount() {
     if (this.state.logged_in) {
-      fetch('http://127.0.0.1:8000/user/obtain_token/', {
+      fetch('http://api.orby.site/user/obtain_token/', {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`
         }
@@ -42,7 +42,7 @@ class App extends Component {
       body: raw,
       redirect: 'follow'
     };
-    fetch('http://127.0.0.1:8000/user/obtain_token/', requestOptions)
+    fetch('http://api.orby.site/user/obtain_token/', requestOptions)
       .then(response => response.json())
       .then(result => {
         if (result.token){
@@ -73,7 +73,7 @@ class App extends Component {
       body: raw,
       redirect: 'follow'
     };
-    fetch('http://127.0.0.1:8000/user/create/', requestOptions)
+    fetch('http://api.orby.site/user/create/', requestOptions)
       .then(response => response.json())
       .then(result => {
         if(result.email){

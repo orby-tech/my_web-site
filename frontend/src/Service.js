@@ -1,5 +1,5 @@
 import axios from 'axios';
-const API_URL = 'http://localhost:8000';
+const API_URL = 'http://api.orby.site';
 const token = {headers: { Authorization: `JWT ${localStorage.getItem('token')}`}};
 
 export default class CustomersService{

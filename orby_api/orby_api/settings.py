@@ -25,7 +25,7 @@ SECRET_KEY = 'sd!4is(mq1id0za9#8kg7a&9-snzzqi0&6240x9xl=%zlv4+v4'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['api.orby.site', 'www.api.orby.site', '127.0.0.1']
 
 
 # Application definition
@@ -145,4 +145,5 @@ CORS_ORIGIN_ALLOW_ALL = True
 
 CORS_ORIGIN_WHITELIST = (
        'http://localhost:3000',
+       'http://127.0.0.1:3000',
 )
