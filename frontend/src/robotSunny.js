@@ -14,7 +14,7 @@ class Answer extends Component {
       trigger: false,
     };
   }
-    commponentWillMount() {
+    componentWillMount() {
       const { steps } = this.props;
 
       var myHeaders = new Headers();
@@ -34,10 +34,9 @@ class Answer extends Component {
         .then(response => response.text())
         .then(result => {
           let answer =  result.substr(2, result.length - 4);
-          this.setState( {answer: answer})
+          this.setState( {result: answer, loading: false})
 
           console.log(answer);
-          return answer;
         })
         .catch(error => console.log('error', error));
 
@@ -49,7 +48,7 @@ class Answer extends Component {
 
       return(
         <div>
-           { loading ? "sdf": result }
+           { loading ? "loading": result }
         </div>
         );
      }
@@ -74,7 +73,7 @@ class RobotSunny extends Component {
 				steps={[
 					{
             id: 'greating',
-            message: 'What is your name?',
+            message: 'Start dialog, please',
             trigger: 'message',
 
           },
@@ -86,7 +85,7 @@ class RobotSunny extends Component {
           {
           	id: 'next',
           	component: <Answer />,
-
+            asMessage: true,
           	trigger: 'message',
           }
 				]}
