@@ -1,7 +1,14 @@
-import React, { Component } from 'react';
+import React, { Component, Suspense } from 'react';
 import { Route } from 'react-router-dom';
 
 import Button from 'react-bootstrap/Button';
+import { useTranslation } from 'react-i18next';
+
+
+function TitleComponent() {
+  const { t, i18n } = useTranslation();
+  return <h1>{t('About me and this progect')}</h1>
+}
 
 
 
@@ -30,11 +37,12 @@ class About extends Component{
 		const infoStyle = this.state.infoCollapsed ? 'moreInformation show' : 'moreInformation unShow';
   	const contactsStyle = this.state.contactsCollapsed ? 'moreInformation show' : 'moreInformation unShow';
 
+
 		return(
 			<div className="container">
-
-				<h1> About me and this progect </h1>
-
+				<Suspense fallback="loading">
+					<TitleComponent />
+				</Suspense>
 
 				<h4> It's progect is site-portfolio</h4>
 				<p> 
