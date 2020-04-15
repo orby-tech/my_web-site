@@ -76,6 +76,9 @@ class About extends Component{
       	<div className={contactsStyle}>
       		<ul>
       			<li><a href="https://t.me/orby_tech"> Telegram: </a> @orby_tech </li>
+      			<li><a href="https://github.com/orby-tech"> github: </a> orby_tech </li>
+      			<li><a href="https://www.linkedin.com/in/timur-bondarenko-2625801a6/">linkedin </a> </li>
+	     			<li><a href="https://vk.com/orbon"> vk </a> </li>
 
       			<li><a href="mailto:tibode495@gmail.com"> e-mail: </a> tibode495@gmail.com </li>
 
