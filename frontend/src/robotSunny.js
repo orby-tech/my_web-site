@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import ChatBot from 'react-simple-chatbot';
-import { ThemeProvider } from 'styled-components';
-import PropTypes from 'prop-types';
 
 
 class Answer extends Component {
@@ -44,7 +42,7 @@ class Answer extends Component {
 
 
     render() {
-      const { trigger, loading, result } = this.state;
+      const { loading, result } = this.state;
 
       return(
         <div>

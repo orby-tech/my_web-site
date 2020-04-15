@@ -1,12 +1,11 @@
 import React, { Component, Suspense } from 'react';
-import { Route } from 'react-router-dom';
 
 import Button from 'react-bootstrap/Button';
 import { useTranslation } from 'react-i18next';
 
 
 function TitleComponent() {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   return <h1>{t('About me and this progect')}</h1>
 }
 

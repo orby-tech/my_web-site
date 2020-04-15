@@ -81,7 +81,7 @@ class App extends Component {
 
             alert("Enter a valid email address.")
           } 
-        }else if (result.password[0] == "This field may not be blank."){
+        }else if (result.password[0] === "This field may not be blank."){
           alert("Password may not be blank.")
         } else{
         console.log(result)
