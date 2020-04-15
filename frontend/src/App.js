@@ -4,12 +4,12 @@ import { Route, Redirect } from 'react-router-dom';
 
 import  NavBar  from './navBar';
 import  About  from './about'
-import  Game  from './tictacgame'
-import  Calculator  from './calculator'
+import  Game  from './Games/tictacgame'
+import  Calculator  from './Utils/calculator'
 import  Eyes  from './eyes'
-import  TakeBall  from './takeBall'
-import  CustomersList from './CustomersList'
-import  CustomerCreateUpdate  from './CustomerCreateUpdate'
+import  TakeBall  from './Games/takeBall'
+import  CustomersList from './Utils/CustomersList'
+import  CustomerCreateUpdate  from './Utils/CustomerCreateUpdate'
 import  RobotSunny  from './robotSunny'
 
 import './index.css';
