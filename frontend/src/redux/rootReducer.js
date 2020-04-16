@@ -1,5 +1,6 @@
 import  {combineReducers} from 'redux'
-import  { ABOUT_INFO_COLLAPSE, 
+import  { ABOUT_INFO_COLLAPSE,
+					NAVBAR_COLLAPSE, 
 					ABOUT_CONTACTS_COLLAPSE } from './types'
 
 //ABOUT BLOCK
@@ -17,7 +18,16 @@ function aboutContactsReducer(state = false, action) {
 	return state	
 }
 
+
+function navBarReducer(state = false, action) {
+	if (action.type === NAVBAR_COLLAPSE) {
+		return !state
+	}	
+	return state	
+}
+
 export const rootReducer = combineReducers({
   aboutInfo: aboutInfoReducer,
-  aboutContacts: aboutContactsReducer
+  aboutContacts: aboutContactsReducer,
+  navBarCollapse: navBarReducer
 })

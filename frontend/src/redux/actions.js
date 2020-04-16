@@ -1,4 +1,4 @@
-import { ABOUT_INFO_COLLAPSE, ABOUT_CONTACTS_COLLAPSE } from './types'
+import { ABOUT_INFO_COLLAPSE, ABOUT_CONTACTS_COLLAPSE, NAVBAR_COLLAPSE } from './types'
 
 
 export function aboutInfo() {
@@ -9,5 +9,10 @@ export function aboutInfo() {
 export function aboutContacts() {
 	return {
 		type: ABOUT_CONTACTS_COLLAPSE
+	}
+}
+export function navBarCollapse() {
+	return {
+		type: NAVBAR_COLLAPSE
 	}
 }

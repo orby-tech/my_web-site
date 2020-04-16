@@ -6,6 +6,22 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import App from './LoginService';
 
+import  { Provider } from 'react-redux'
+import  { applyMiddleware, createStore, compose } from 'redux'
+import  { composeWithDevTools } from 'redux-devtools-extension'
+import  { rootReducer } from './redux/rootReducer'
+import  { connect, provider } from 'react-redux'
+import  thunk from 'redux-thunk'
+import  logger from 'redux-logger'
+
+import  { navBarCollapse } from './redux/actions'
+
+
+const store = createStore(rootReducer,   
+    composeWithDevTools(
+    applyMiddleware(thunk, logger)
+  ))
+
 //управление кнопочкой логина
 function Example() {
   const [show, setShow] = useState(false);
@@ -35,7 +51,7 @@ class NavBar extends Component{
     this.state = {
       collapsed: false,
       opend: "",
-      auth: "no", 
+      auth: false, 
     };
   }
   componentDidMount(){
@@ -51,24 +67,19 @@ class NavBar extends Component{
   }
 
   toggleNavbar() {
-    const { match: { params } } = this.props;
-    this.setState({
-      collapsed: !this.state.collapsed,
-      opend: params.id
-    });
+    this.props.dispatch(navBarCollapse())
   }
 
   handleShow() {
     this.setState({
-      auth: "login",
+      auth: true,
     });
   }
   render() {
-    const collapsed = this.state.collapsed;
     const opend = this.state.opend;
 
-    const pic = collapsed ? "nav_row nav_row_in" : "nav_row nav_row_in active";
-    const classCollapse = collapsed ? 'collapse navbar-collapse' : 'collapse navbar-collapse show';
+    const pic = this.props.navBarCollapse ? "nav_row nav_row_in" : "nav_row nav_row_in active";
+    const classCollapse = this.props.navBarCollapse ? 'collapse navbar-collapse' : 'collapse navbar-collapse show';
     
     const classUtils = (opend.toString() === "utils") ? 'navbar-nav show' : 'navbar-nav unShow';
     const classGames = (opend.toString() === "minigames") ? 'navbar-nav show' : 'navbar-nav unShow';
@@ -150,8 +161,16 @@ class NavBar extends Component{
   }
 }
 
-export default NavBar;
+const mapStateToProps = (state) => {
+  console.log(state)
+  return { 
+    navBarCollapse: state.navBarCollapse
+  };
+}
 
+const WrappedNavBar = connect(mapStateToProps)(NavBar);
+
+export default WrappedNavBar;
 
 
 

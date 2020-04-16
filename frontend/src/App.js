@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { Route } from 'react-router-dom';
 
-import  NavBar  from './navBar';
+import  WrappedNavBar  from './navBar';
 import  WrappedAbout  from './about'
 import  Game  from './Games/tictacgame'
 import  Calculator  from './Utils/calculator'
@@ -36,7 +36,7 @@ const NaVLayout = () => (
       <Route exact component={Eyes} />
     </div>
     <div>  
-      <Route path="/:id" component={NavBar}/>
+      <Route path="/:id" component={WrappedNavBar}/>
     </div>
   </div>
 )
