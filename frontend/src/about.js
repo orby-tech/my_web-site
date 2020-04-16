@@ -3,42 +3,49 @@ import React, { Component, Suspense } from 'react';
 import Button from 'react-bootstrap/Button';
 import { useTranslation } from 'react-i18next';
 
-import {rootReducer} from 'redux'
-import {createStore} from 'redux'
 
+import  { Provider } from 'react-redux'
+import  { applyMiddleware, createStore, compose } from 'redux'
+import  { rootReducer } from './redux/rootReducer'
+import  thunk from 'redux-thunk'
+import  { composeWithDevTools } from 'redux-devtools-extension'
+import  logger from 'redux-logger'
+import  { connect, provider } from 'react-redux'
+
+import  { aboutInfo, aboutContacts } from './redux/actions'
+
+
+const store = createStore(rootReducer,   
+    composeWithDevTools(
+    applyMiddleware(thunk, logger)
+  ))
 
 function TitleComponent() {
-  const { t } = useTranslation();
-  return <h1>{t('About me and this progect')}</h1>
+  return <h1>About me and this progect</h1>
 }
 
 
 
 class About extends Component{
-	  constructor(props) {
+  constructor(props) {
 	  super(props);
 	  this.infoClick = this.infoClick.bind(this);
  	  this.contactsClick = this.contactsClick.bind(this);
-
-	    this.state = {
-      infoCollapsed: false,
-      contactsCollapsed: false
-    }
-    };
+  };
 
 
-    infoClick() {
-    	this.setState({infoCollapsed: !this.state.infoCollapsed});
+  infoClick() {
+  	this.props.dispatch(aboutInfo())
+  };
 
-    };
-
-    contactsClick() {
-    	this.setState({contactsCollapsed: !this.state.contactsCollapsed});
-    };
+  contactsClick() {
+    this.props.dispatch(aboutContacts())
+  };
 
 	render(){
-		const infoStyle = this.state.infoCollapsed ? 'moreInformation show' : 'moreInformation unShow';
-  	const contactsStyle = this.state.contactsCollapsed ? 'moreInformation show' : 'moreInformation unShow';
+		const infoStyle = this.props.aboutInfo === true ? 'moreInformation show' : 'moreInformation unShow';
+  	const contactsStyle = this.props.aboutContacts ? 'moreInformation show' : 'moreInformation unShow';
+    console.log(this.props)
 
 
 		return(
@@ -50,7 +57,7 @@ class About extends Component{
 				<h4> It's progect is site-portfolio</h4>
 				<p> 
 						I testing my ideas and fitces in this web-site.
-						It's created with React and Django-REST.
+						It's created with React/Redux and Django-REST.
 				</p>
 				<Button  className="" variant='outline-primary' onClick={this.infoClick}>
 					More information
@@ -58,10 +65,8 @@ class About extends Component{
       	<div className={infoStyle}>
       		<ul>
       			<li>Back-end: Python3, Django-REST</li>
-      			<li>Front-end: with React</li>
-                <li>API: axios</li>
-
-
+      			<li>Front-end: React/Redux</li>
+            <li>API: with JWT token</li>
       		</ul>
       	</div>
 
@@ -92,4 +97,15 @@ class About extends Component{
 		);
 	}
 }
-export default About;
+
+const mapStateToProps = (state) => {
+  console.log(state)
+  return { 
+    aboutInfo: state.aboutInfo,
+    aboutContacts: state.aboutContacts
+  };
+}
+
+const WrappedAbout = connect(mapStateToProps)(About);
+
+export default WrappedAbout;
