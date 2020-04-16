@@ -3,6 +3,9 @@ import React, { Component, Suspense } from 'react';
 import Button from 'react-bootstrap/Button';
 import { useTranslation } from 'react-i18next';
 
+import {rootReducer} from 'redux'
+import {createStore} from 'redux'
+
 
 function TitleComponent() {
   const { t } = useTranslation();
@@ -26,6 +29,7 @@ class About extends Component{
 
     infoClick() {
     	this.setState({infoCollapsed: !this.state.infoCollapsed});
+
     };
 
     contactsClick() {
