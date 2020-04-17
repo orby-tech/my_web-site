@@ -11,6 +11,17 @@
 	"aboutMeText_2": "Now I work with Python and React",
 	"aboutMeButton": "Contacts",
 
-	"language": "language"
+	"language": "language",
+	"navBarAbout": "About",
+	"navBarMiniGames": "Mini Games",
+	"navBarUtils": "Utils",
+	"navBarSunny": "Sunny Robot",
 
+	"navBarCustumers": "CUSTOMERS",
+	"navBarCreateCustumer": "CREATE CUSTOMER",
+
+	"navBarTcTacGame": "Tic Tac Game",
+	"navBarTakeCrazyBall": "Take Crazy Ball",
+
+	"navBarCalculator": "Calculator"
 }

@@ -21,7 +21,7 @@ function aboutContactsReducer(state = false, action) {
 }
 
 
-function navBarReducer(state = false, action) {
+function navBarReducer(state = true, action) {
 	if (action.type === NAVBAR_COLLAPSE) {
 		return !state
 	}	

@@ -38,7 +38,9 @@ function Example() {
   return (
     <>
       <Button  className="login" variant='outline-primary' onClick={handleShow}>
-        {!localStorage.getItem('token') ? "Log in" : localStorage.getItem('username')}
+        {!localStorage.getItem('token') 
+          ? "Log in" 
+          : localStorage.getItem('username')}
       </Button>
 
       <Modal show={show} onHide={handleClose}>
@@ -102,12 +104,23 @@ class NavBar extends Component{
   render() {
     const opend = this.state.opend;
 
-    const pic = this.props.navBarCollapse ? "nav_row nav_row_in" : "nav_row nav_row_in active";
-    const classCollapse = this.props.navBarCollapse ? 'collapse navbar-collapse' : 'collapse navbar-collapse show';
+    const pic = this.props.navBarCollapse 
+                ? "nav_row nav_row_in" 
+                : "nav_row nav_row_in active";
+    const classCollapse = this.props.navBarCollapse 
+                          ? 'collapse navbar-collapse' 
+                          : 'collapse navbar-collapse show';
     
-    const classUtils = (opend.toString() === "utils") ? 'navbar-nav show' : 'navbar-nav unShow';
-    const classGames = (opend.toString() === "minigames") ? 'navbar-nav show' : 'navbar-nav unShow';
-    const classCustomer = (opend.toString() === "customers" || opend.toString() === "utils") ? 'navbar-nav show' : 'navbar-nav unShow';
+    const classUtils = (opend.toString() === "utils") 
+                        ? 'navbar-nav show' 
+                        : 'navbar-nav unShow';
+    const classGames = (opend.toString() === "minigames") 
+                        ? 'navbar-nav show' 
+                        : 'navbar-nav unShow';
+    const classCustomer = (opend.toString() === "customers" 
+                          || opend.toString() === "utils") 
+                              ? 'navbar-nav show' 
+                              : 'navbar-nav unShow';
     
     const { strings, currentLanguageCode } = this.props;
 
@@ -143,16 +156,28 @@ class NavBar extends Component{
             <div className={classCollapse}>
               <ul className="navbar-nav ml-auto">
                 <li className="nav-item">
-                  <Link onClick={this.toggleNavbar} className="nav-link" to="/about">About</Link>
+                  <Link onClick={this.toggleNavbar} 
+                        className="nav-link" 
+                        to="/about">{strings["navBarAbout"]}
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <Link onClick={this.toggleNavbar} className="nav-link" to="/minigames">Mini Games</Link>
+                  <Link onClick={this.toggleNavbar} 
+                        className="nav-link" 
+                        to="/minigames">{strings["navBarMiniGames"]}
+                  </Link>
                 </li> 
                 <li className="nav-item">
-                  <Link onClick={this.toggleNavbar} className="nav-link" to="/utils">Utils</Link>
+                  <Link onClick={this.toggleNavbar} 
+                        className="nav-link" 
+                        to="/utils">{strings["navBarUtils"]}
+                  </Link>
                 </li>        
                 <li className="nav-item">
-                  <Link onClick={this.toggleNavbar} className="nav-link" to="/sunny">Sunny robot</Link>
+                  <Link onClick={this.toggleNavbar}
+                        className="nav-link" 
+                        to="/sunny">{strings["navBarSunny"]}
+                  </Link>
                 </li>      
               </ul>
             </div>
@@ -160,10 +185,16 @@ class NavBar extends Component{
             <div className="menu-navbar">
               <ul className={classCustomer}>
                 <li className="nav-item">
-                  <Link  className="nav-link" to="/utils/customers">CUSTOMERS</Link>
+                  <Link className="nav-link" 
+                        to="/utils/customers">
+                        {strings["navBarCustumers"]}
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <Link  className="nav-link" to="/utils/customers/customer">CREATE CUSTOMER</Link>
+                  <Link className="nav-link" 
+                        to="/utils/customers/customer">
+                        {strings["navBarCreateCustumer"]}
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -171,10 +202,16 @@ class NavBar extends Component{
             <div className="menu-navbar">
               <ul className={classGames}>
                 <li className="nav-item">
-                  <Link  className="nav-link" to="/minigames/tictacgame/">Tic Tac Game</Link>
+                  <Link className="nav-link" 
+                        to="/minigames/tictacgame/">
+                        {strings["navBarTcTacGame"]}
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <Link  className="nav-link" to="/minigames/takeballgame/">Take Crazy Ball</Link>
+                  <Link className="nav-link" 
+                        to="/minigames/takeballgame/">
+                        {strings["navBarTakeCrazyBall"]}
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -183,7 +220,10 @@ class NavBar extends Component{
               <ul className={classUtils}>
 
                 <li className="nav-item">
-                  <Link  className="nav-link" to="/utils/calculator/">Calculator</Link>
+                  <Link className="nav-link" 
+                        to="/utils/calculator/">
+                        {strings["navBarCalculator"]}
+                  </Link>
                 </li>
               </ul>
             </div>

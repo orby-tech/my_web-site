@@ -11,5 +11,17 @@
 	"aboutMeText_2": "Сейчас я работаю с Python и React/Redux и являюсь преподавателем точных наук вот уже более четырех лет.",
 	"aboutMeButton": "Контакты",
 
-	"language": "язык"
+	"language": "язык",
+	"navBarAbout": "Инфо",
+	"navBarMiniGames": "Мини игры",
+	"navBarUtils": "Приложения",
+	"navBarSunny": "Робот Санни",
+
+	"navBarCustumers": "Клиненты",
+	"navBarCreateCustumer": "Добавить клиента",
+
+	"navBarTcTacGame": "Крестики нолики",
+	"navBarTakeCrazyBall": "Поймай дикий шарик",
+
+	"navBarCalculator": "Калькулятор"
 }
