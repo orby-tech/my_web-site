@@ -152,6 +152,12 @@ h1,h4{
 .nav_row_in.active .bottom {
   stroke-dashoffset: -132px;
 }
+.lang_select .custom-select {
+  width: 66px;
+  margin: 7px;
+  background-color: #fbec5d;
+  float: left;
+}
 
 
 .moreInformation {

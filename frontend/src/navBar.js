@@ -127,9 +127,11 @@ class NavBar extends Component{
 
     return(
       <>
-        <div>
-        {strings["language"]}:{" "}
-          <select value={currentLanguageCode} onChange={this.changeLanguage}>
+        <div className="lang_select">
+          <select className="custom-select mr-sm-2" 
+                  id="inlineFormCustomSelect" 
+                  value={currentLanguageCode} 
+                  onChange={this.changeLanguage}>
             <option value="en">en</option>
             <option value="ru">ru</option>
           </select>
