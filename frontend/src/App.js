@@ -29,6 +29,12 @@ import './css/takeBall.css';
 import './css/about.css';
 import './css/robotSunny.css';
 
+import {
+  multilanguage,
+  changeLanguage,
+  loadLanguages
+} from "redux-multilanguage";
+
 
 const NaVLayout = () => (
   <div>
@@ -45,7 +51,7 @@ const store = createStore(rootReducer,
     applyMiddleware(thunk, logger)))
 
 const BaseLayout = () => (
-  <Provider store={store}>
+
 
     <div className="container contents">
       <Route path="/about" exact component={WrappedAbout} />
@@ -60,26 +66,28 @@ const BaseLayout = () => (
       <Route path="/utils/customers/customer/:pk" exact  component={CustomerCreateUpdate} />
       <Route path="/utils/customers/customer" exact component={CustomerCreateUpdate} />
     </div>
-  </Provider>
+
 )
 
 class App extends Component {
   render() {
     return (
-      <BrowserRouter>
-        <NaVLayout />
-        <BaseLayout/>
-      </BrowserRouter>
+  <Provider store={store}>
+    <BrowserRouter>
+      <NaVLayout />
+      <BaseLayout/>
+    </BrowserRouter>
+  </Provider>
     );
   }
 }
 
 const mapStateToProps = (state) => {
   console.log(state)
-  return { state };
+  return state;
 }
 
-const WrappedApp = connect(mapStateToProps)(App);
+const WrappedApp = connect(mapStateToProps)(multilanguage(App));
 
 export default WrappedApp;
 

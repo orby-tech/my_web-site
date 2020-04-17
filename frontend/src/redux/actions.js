@@ -1,4 +1,6 @@
-import { ABOUT_INFO_COLLAPSE, ABOUT_CONTACTS_COLLAPSE, NAVBAR_COLLAPSE } from './types'
+import  { ABOUT_INFO_COLLAPSE, 
+					ABOUT_CONTACTS_COLLAPSE, 
+					NAVBAR_COLLAPSE} from './types'
 
 
 export function aboutInfo() {

@@ -1,0 +1,16 @@
+{
+	"aboutTitle": "About me and this progect",
+
+	"aboutProgectTitle": "It's progect is site-portfolio",
+	"aboutProgectText": "I testing my ideas and fitces in this web-site. It's created with React/Redux and Django-REST.",
+	"aboutProgectButton": "More information",
+
+	"aboutMeTitle": "Me",
+	"aboutMeText_0": "I like work, I can create.",
+	"aboutMeText_1": "More than three years ago, I started learning C#, but it was unsuccessful.",
+	"aboutMeText_2": "Now I work with Python and React",
+	"aboutMeButton": "Contacts",
+
+	"language": "language"
+
+}

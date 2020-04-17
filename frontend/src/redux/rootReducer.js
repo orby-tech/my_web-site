@@ -1,6 +1,8 @@
 import  {combineReducers} from 'redux'
+import { createMultilanguageReducer } from "redux-multilanguage";
+
 import  { ABOUT_INFO_COLLAPSE,
-					NAVBAR_COLLAPSE, 
+					NAVBAR_COLLAPSE,
 					ABOUT_CONTACTS_COLLAPSE } from './types'
 
 //ABOUT BLOCK
@@ -29,5 +31,7 @@ function navBarReducer(state = false, action) {
 export const rootReducer = combineReducers({
   aboutInfo: aboutInfoReducer,
   aboutContacts: aboutContactsReducer,
-  navBarCollapse: navBarReducer
+  navBarCollapse: navBarReducer,
+  multilanguage: createMultilanguageReducer({ currentLanguageCode: "en" })
+
 })

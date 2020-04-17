@@ -1,0 +1,15 @@
+{
+	"aboutTitle": "Обо мне и этом проекте",
+
+	"aboutProgectTitle": "Этот проект - это сайт-портфолио",
+	"aboutProgectText": "Я здесь тестирую свои идеи и возможности. Он написан на Django-REST и React/Redux.",
+	"aboutProgectButton": "Подробнее",
+
+	"aboutMeTitle": "Обо мне",
+	"aboutMeText_0": "Я люблю работать и создавать.",
+	"aboutMeText_1": "Больше трех лет назад я начал изучать C#, но это не увенчалось успехом.",
+	"aboutMeText_2": "Сейчас я работаю с Python и React/Redux и являюсь преподавателем точных наук вот уже более четырех лет.",
+	"aboutMeButton": "Контакты",
+
+	"language": "язык"
+}

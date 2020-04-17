@@ -1,8 +1,11 @@
 import React, { Component, Suspense } from 'react';
 
 import Button from 'react-bootstrap/Button';
-import { useTranslation } from 'react-i18next';
 
+import {
+  multilanguage,
+  loadLanguages
+} from "redux-multilanguage";
 
 import  { Provider } from 'react-redux'
 import  { applyMiddleware, createStore, compose } from 'redux'
@@ -20,13 +23,11 @@ const store = createStore(rootReducer,
     applyMiddleware(thunk, logger)
   ))
 
-function TitleComponent() {
-  return <h1>About me and this progect</h1>
-}
 
 
 
 class About extends Component{
+
   constructor(props) {
 	  super(props);
 	  this.infoClick = this.infoClick.bind(this);
@@ -42,25 +43,36 @@ class About extends Component{
     this.props.dispatch(aboutContacts())
   };
 
+  componentDidMount() {
+    this.loadLanguages();
+  }
+
+
+  loadLanguages() {
+    this.props.dispatch(loadLanguages({
+        languages: {
+          en: require("./languages/en.json"),
+          ru: require("./languages/ru.json")
+        }
+      })
+    );
+  }
+
+
 	render(){
 		const infoStyle = this.props.aboutInfo === true ? 'moreInformation show' : 'moreInformation unShow';
   	const contactsStyle = this.props.aboutContacts ? 'moreInformation show' : 'moreInformation unShow';
-    console.log(this.props)
 
+    const { strings } = this.props;
 
 		return(
 			<div className="container">
-				<Suspense fallback="loading">
-					<TitleComponent />
-				</Suspense>
+				<h1>{strings["aboutTitle"]}</h1>
 
-				<h4> It's progect is site-portfolio</h4>
-				<p> 
-						I testing my ideas and fitces in this web-site.
-						It's created with React/Redux and Django-REST.
-				</p>
+				<h4> {strings["aboutProgectTitle"]} </h4>
+				<p> {strings["aboutProgectText"]}</p>
 				<Button  className="" variant='outline-primary' onClick={this.infoClick}>
-					More information
+					{strings["aboutProgectButton"]}
       	</Button>
       	<div className={infoStyle}>
       		<ul>
@@ -72,14 +84,14 @@ class About extends Component{
 
 				<hr/>
 
-				<h4> Me </h4>
+				<h4> {strings["aboutMeTitle"]} </h4>
 				<p> 
-						I like work, I can create. <br/>						
-						More than three years ago, I started learning C#, but it was unsuccessful. <br/><br/>
-						Now I work with Python and React
+						{strings["aboutMeText_0"]} <br/>						
+						{strings["aboutMeText_1"]} <br/><br/>
+						{strings["aboutMeText_2"]}
 				</p>
 				<Button  className="" variant='outline-primary' onClick={this.contactsClick}>
-					Contacts 
+					{strings["aboutMeButton"]} 
       	</Button>
       	<div className={contactsStyle}>
       		<ul>
@@ -99,13 +111,12 @@ class About extends Component{
 }
 
 const mapStateToProps = (state) => {
-  console.log(state)
   return { 
     aboutInfo: state.aboutInfo,
     aboutContacts: state.aboutContacts
   };
 }
 
-const WrappedAbout = connect(mapStateToProps)(About);
+const WrappedAbout = connect(mapStateToProps)(multilanguage(About));
 
 export default WrappedAbout;

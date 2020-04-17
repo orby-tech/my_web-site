@@ -16,6 +16,12 @@ import  logger from 'redux-logger'
 
 import  { navBarCollapse } from './redux/actions'
 
+import {
+  multilanguage,
+  changeLanguage,
+  loadLanguages
+} from "redux-multilanguage";
+
 
 const store = createStore(rootReducer,   
     composeWithDevTools(
@@ -43,6 +49,8 @@ function Example() {
 }
 
 class NavBar extends Component{
+  state = {language: 'en'}
+
   constructor(props) {
     super(props);
     this.toggleNavbar = this.toggleNavbar.bind(this);
@@ -57,8 +65,24 @@ class NavBar extends Component{
   componentDidMount(){
     const { match: { params } } = this.props;
     this.setState({opend: params.id});
-
+    this.loadLanguages();
   }
+
+  loadLanguages() {
+    this.props.dispatch(loadLanguages({
+        languages: {
+          en: require("./languages/en.json"),
+          ru: require("./languages/ru.json")
+        }
+      })
+    );
+  }
+
+  changeLanguage = e => {
+    const languageCode = e.target.value;
+    this.props.dispatch(changeLanguage(languageCode));
+  };
+
   componentDidUpdate(prevProps) {
     const { match: { params } } = this.props;
     if (params.id !== this.state.opend) {
@@ -84,10 +108,20 @@ class NavBar extends Component{
     const classUtils = (opend.toString() === "utils") ? 'navbar-nav show' : 'navbar-nav unShow';
     const classGames = (opend.toString() === "minigames") ? 'navbar-nav show' : 'navbar-nav unShow';
     const classCustomer = (opend.toString() === "customers" || opend.toString() === "utils") ? 'navbar-nav show' : 'navbar-nav unShow';
+    
+    const { strings, currentLanguageCode } = this.props;
 
 
     return(
       <>
+        <div>
+        {strings["language"]}:{" "}
+          <select value={currentLanguageCode} onChange={this.changeLanguage}>
+            <option value="en">en</option>
+            <option value="ru">ru</option>
+          </select>
+        </div>
+
         <div className="container">          
           <nav className="navbar navbar-light bg-light transparent-nav">
             <a className="navbar-brand" href="#">ORBY-project</a>
@@ -168,7 +202,7 @@ const mapStateToProps = (state) => {
   };
 }
 
-const WrappedNavBar = connect(mapStateToProps)(NavBar);
+const WrappedNavBar = connect(mapStateToProps)(multilanguage(NavBar));
 
 export default WrappedNavBar;
 
