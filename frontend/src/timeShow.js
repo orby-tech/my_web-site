@@ -2,6 +2,13 @@ import React, { Component } from 'react';
 
 import './css/timeShow.css';
 
+import {
+  multilanguage,
+  loadLanguages
+} from "redux-multilanguage";
+import  { connect, provider } from 'react-redux'
+
+
 function Square(props) {
 	let view = props.value != 1
 					? "time_block"
@@ -28,7 +35,7 @@ function Square(props) {
   );
 }
 
-class TimeShow extends React.Component {
+class Table extends React.Component {
 	renderTimeBlock(i) {
     return <Square 
       value={this.props.squares[i]} 
@@ -50,7 +57,7 @@ class TimeShow extends React.Component {
 	}
 }
 
-class Table extends React.Component {
+class TimeShow extends React.Component {
 	constructor(props){
 		let arr = Array(7).fill(null)
 		arr[0] = 1;
@@ -60,6 +67,20 @@ class Table extends React.Component {
 		}
 	}
 
+	componentDidMount() {
+    this.loadLanguages();
+  }
+
+  loadLanguages() {
+    this.props.dispatch(loadLanguages({
+        languages: {
+          en: require("./languages/en.json"),
+          ru: require("./languages/ru.json")
+        }
+      })
+    );
+  }
+
 	handleClick(i) {
 		let arr = Array(7).fill(null)
 		arr[i] = 1;
@@ -68,11 +89,13 @@ class Table extends React.Component {
 		})
 	}
 	render(){
+	  const { strings } = this.props;
+
 		let status
 		if(this.state.squares[0] === 1) {
-			status = "today,"
+			status = strings["today"] + ","
 		} else if(this.state.squares[1] === 1) {
-			status = "tommorow,"
+			status = strings["tommorow"] + ","
 		} else {
 			status = " "
 		}
@@ -85,25 +108,25 @@ class Table extends React.Component {
 		}
 		switch(day_for_switch){
 			case 1:
-				day = "Monday";
+				day = strings["Monday"];
 				break;
 			case 2:
-				day = "Tuesday";
+				day = strings["Tuesday"];
 				break;
 			case 3:
-				day = "Wednesday";
+				day = strings["Wednesday"];
 				break;
 			case 4:
-				day = "Thursday";
+				day = strings["Thursday"];
 				break;
 			case 5:
-				day = "Friday";
+				day = strings["Friday"];
 				break;
 			case 6:
-				day = "Saturday";
+				day = strings["Saturday"];
 				break;
 			case 7:
-				day = "Sunday";
+				day = strings["Sunday"];
 				break;
 		}
 
@@ -113,7 +136,7 @@ class Table extends React.Component {
 					{status}  {day}
 				</div>
 
-		    <TimeShow 
+		    <Table 
 			    squares={this.state.squares}
 			    onClick={(i) => this.handleClick(i)}
 			  />
@@ -121,5 +144,6 @@ class Table extends React.Component {
 	  )
 	}
 }
+const WrappedTimeShow = connect()(multilanguage(TimeShow));
 
-export default Table;
+export default WrappedTimeShow;

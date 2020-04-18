@@ -168,6 +168,12 @@ class NavBar extends Component{
                         className="nav-link" 
                         to="/minigames">{strings["navBarMiniGames"]}
                   </Link>
+                </li>
+                <li className="nav-item">
+                  <Link onClick={this.toggleNavbar} 
+                        className="nav-link" 
+                        to="/timeshow">{strings["navBarTimeShow"]}
+                  </Link>
                 </li> 
                 <li className="nav-item">
                   <Link onClick={this.toggleNavbar} 

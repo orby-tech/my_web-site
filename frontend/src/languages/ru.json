@@ -18,6 +18,7 @@
 	"navBarMiniGames": "Мини игры",
 	"navBarUtils": "Приложения",
 	"navBarSunny": "Робот Санни",
+	"navBarTimeShow": "Расписание",
 
 	"navBarCustumers": "Клиненты",
 	"navBarCreateCustumer": "Добавить клиента",
@@ -25,5 +26,15 @@
 	"navBarTcTacGame": "Крестики нолики",
 	"navBarTakeCrazyBall": "Поймай дикий шарик",
 
-	"navBarCalculator": "Калькулятор"
+	"navBarCalculator": "Калькулятор",
+
+	"today": "сегодня",
+	"tommorow": "завтра",
+	"Monday": "Понедельник",
+	"Tuesday": "Вторник",
+	"Wednesday": "Среда",
+	"Thursday": "Четвег",
+	"Friday": "Пятница",
+	"Saturday": "Суббота",
+	"Sunday": "Воскресенье"
 }
