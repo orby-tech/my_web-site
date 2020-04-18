@@ -11,6 +11,7 @@ import  TakeBall  from './Games/takeBall'
 import  CustomersList from './Utils/CustomersList'
 import  CustomerCreateUpdate  from './Utils/CustomerCreateUpdate'
 import  RobotSunny  from './robotSunny'
+import  TimeShow from './timeShow'
 
 import  { Provider } from 'react-redux'
 import  { applyMiddleware, createStore, compose } from 'redux'
@@ -65,6 +66,8 @@ const BaseLayout = () => (
       <Route path="/utils/customers/" exact component={CustomersList} />
       <Route path="/utils/customers/customer/:pk" exact  component={CustomerCreateUpdate} />
       <Route path="/utils/customers/customer" exact component={CustomerCreateUpdate} />
+      <Route path="/timeshow" exact component={TimeShow} />
+
     </div>
 
 )

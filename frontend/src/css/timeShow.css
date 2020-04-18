@@ -1,0 +1,19 @@
+.time_board{
+	margin-top: 60px;
+}
+
+.time_block {
+	width: 20px;
+	height: 300px;
+	margin-left: 20px;
+	float:left;
+
+	background-color: #7fff00;
+	border-radius: 2px;
+}
+
+.selected {
+	width: 80px;
+	margin-left: 80px;
+	margin-right: 10px;
+}
