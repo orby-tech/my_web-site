@@ -7,8 +7,8 @@ function Square(props) {
 					? "time_block"
 					: "time_block selected"
 	let view_info = props.value === 1
-	? "time_info"
-	: "time_info_nodisplay"
+					? "time_info"
+					: "time_info_nodisplay"
   return (
 	  <>
 	  	<div className={view_info} >
@@ -70,16 +70,47 @@ class Table extends React.Component {
 	render(){
 		let status
 		if(this.state.squares[0] === 1) {
-			status = "today"
+			status = "today,"
 		} else if(this.state.squares[1] === 1) {
-			status = "tommorow"
+			status = "tommorow,"
 		} else {
-			status = "day"
+			status = " "
 		}
+
+		let now = new Date();
+		let day;
+		let day_for_switch = now.getDay() + this.state.squares.indexOf(1)
+		if (day_for_switch > 7) {
+			day_for_switch -= 7
+		}
+		switch(day_for_switch){
+			case 1:
+				day = "Monday";
+				break;
+			case 2:
+				day = "Tuesday";
+				break;
+			case 3:
+				day = "Wednesday";
+				break;
+			case 4:
+				day = "Thursday";
+				break;
+			case 5:
+				day = "Friday";
+				break;
+			case 6:
+				day = "Saturday";
+				break;
+			case 7:
+				day = "Sunday";
+				break;
+		}
+
 		return(
 			<>
 				<div className="status_time">
-					{status}
+					{status}  {day}
 				</div>
 
 		    <TimeShow 
