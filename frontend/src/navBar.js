@@ -6,13 +6,7 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import App from './LoginService';
 
-import  { Provider } from 'react-redux'
-import  { applyMiddleware, createStore, compose } from 'redux'
-import  { composeWithDevTools } from 'redux-devtools-extension'
-import  { rootReducer } from './redux/rootReducer'
-import  { connect, provider } from 'react-redux'
-import  thunk from 'redux-thunk'
-import  logger from 'redux-logger'
+import  { connect } from 'react-redux'
 
 import  { navBarCollapse } from './redux/actions'
 
@@ -23,10 +17,6 @@ import {
 } from "redux-multilanguage";
 
 
-const store = createStore(rootReducer,   
-    composeWithDevTools(
-    applyMiddleware(thunk, logger)
-  ))
 
 //управление кнопочкой логина
 function Example() {
@@ -139,7 +129,7 @@ class NavBar extends Component{
 
         <div className="container">          
           <nav className="navbar navbar-light bg-light transparent-nav">
-            <a className="navbar-brand" href="#">ORBY-project</a>
+            <p className="navbar-brand">ORBY-project</p>
 
             <Example /> 
 
@@ -244,7 +234,6 @@ class NavBar extends Component{
 }
 
 const mapStateToProps = (state) => {
-  console.log(state)
   return { 
     navBarCollapse: state.navBarCollapse
   };

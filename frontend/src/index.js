@@ -1,12 +1,12 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import WrappedApp from './App';
-import * as serviceWorker from './serviceWorker';
-import { Provider } from 'react-redux'
+import  React from 'react';
+import  ReactDOM from 'react-dom';
+import  './index.css';
+import  WrappedApp from './App';
+import  * as serviceWorker from './serviceWorker';
+import  { Provider } from 'react-redux'
 
-import  {applyMiddleware, createStore, compose} from 'redux'
-import  {rootReducer} from './redux/rootReducer'
+import  { applyMiddleware, createStore } from 'redux'
+import  { rootReducer} from './redux/rootReducer'
 import  thunk from 'redux-thunk'
 import  { composeWithDevTools } from 'redux-devtools-extension'
 import  logger from 'redux-logger'

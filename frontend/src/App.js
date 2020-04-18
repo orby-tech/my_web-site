@@ -14,10 +14,10 @@ import  RobotSunny  from './robotSunny'
 import  WrappedTimeShow from './timeShow'
 
 import  { Provider } from 'react-redux'
-import  { applyMiddleware, createStore, compose } from 'redux'
+import  { applyMiddleware, createStore } from 'redux'
 import  { composeWithDevTools } from 'redux-devtools-extension'
 import  { rootReducer } from './redux/rootReducer'
-import  { connect, provider } from 'react-redux'
+import  { connect } from 'react-redux'
 import  thunk from 'redux-thunk'
 import  logger from 'redux-logger'
 
@@ -31,9 +31,7 @@ import './css/about.css';
 import './css/robotSunny.css';
 
 import {
-  multilanguage,
-  changeLanguage,
-  loadLanguages
+  multilanguage
 } from "redux-multilanguage";
 
 
@@ -86,7 +84,6 @@ class App extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state)
   return state;
 }
 

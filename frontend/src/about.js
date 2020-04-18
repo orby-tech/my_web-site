@@ -1,4 +1,4 @@
-import React, { Component, Suspense } from 'react';
+import React, { Component } from 'react';
 
 import Button from 'react-bootstrap/Button';
 
@@ -7,22 +7,9 @@ import {
   loadLanguages
 } from "redux-multilanguage";
 
-import  { Provider } from 'react-redux'
-import  { applyMiddleware, createStore, compose } from 'redux'
-import  { rootReducer } from './redux/rootReducer'
-import  thunk from 'redux-thunk'
-import  { composeWithDevTools } from 'redux-devtools-extension'
-import  logger from 'redux-logger'
-import  { connect, provider } from 'react-redux'
+import  { connect } from 'react-redux'
 
 import  { aboutInfo, aboutContacts } from './redux/actions'
-
-
-const store = createStore(rootReducer,   
-    composeWithDevTools(
-    applyMiddleware(thunk, logger)
-  ))
-
 
 
 

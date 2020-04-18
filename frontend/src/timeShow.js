@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import './css/timeShow.css';
 
@@ -6,11 +6,11 @@ import {
   multilanguage,
   loadLanguages
 } from "redux-multilanguage";
-import  { connect, provider } from 'react-redux'
+import  { connect } from 'react-redux'
 
 
 function Square(props) {
-	let view = props.value != 1
+	let view = props.value !== 1
 					? "time_block"
 					: "time_block selected"
 	let view_info = props.value === 1
@@ -127,6 +127,9 @@ class TimeShow extends React.Component {
 				break;
 			case 7:
 				day = strings["Sunday"];
+				break;
+			default: 
+				day = 0;
 				break;
 		}
 
