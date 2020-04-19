@@ -5,6 +5,9 @@ import solar_yellow from "./img/solar_yellow.svg"
 import {
   multilanguage
 } from "redux-multilanguage";
+import  { changeTheme } from './redux/actions'
+import  { connect } from 'react-redux'
+
 
 class BlackTheme extends Component {
   constructor(props) {
@@ -18,10 +21,9 @@ class BlackTheme extends Component {
   themeClick() {
     document.body.classList.toggle("blackTheme");
     document.getElementById("navBar").classList.toggle("blackTheme");
-    // document.li.toggle("blackTheme")
-        console.log(this.state.dark);
-    this.setState = ({dark: !this.state.dark});
-    console.log(this.state.dark);
+    document.getElementById("navBar").classList.toggle("blackTheme")
+    this.setState({dark: !this.state.dark});
+    this.props.dispatch(changeTheme());
 
   }
   render() {
@@ -38,4 +40,11 @@ class BlackTheme extends Component {
     )
   }
 }
-export default BlackTheme
+const mapStateToProps = (state) => {
+  return { 
+    theme: state.theme
+  };
+}
+
+const WrappedBlackTheme = connect(mapStateToProps)(multilanguage(BlackTheme));
+export default WrappedBlackTheme

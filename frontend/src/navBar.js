@@ -114,6 +114,12 @@ class NavBar extends Component{
     
     const { strings, currentLanguageCode } = this.props;
 
+    const theme_navbar_brand = this.props.theme 
+                  ? "navbar-brand"
+                  : "navbar-brand blackTheme"
+    const theme_navbar_link = this.props.theme 
+                  ? "nav-link"
+                  : "nav-link blackTheme"
 
     return(
       <>
@@ -129,7 +135,7 @@ class NavBar extends Component{
 
         <div className="container">          
           <nav className="navbar navbar-light transparent-nav" id="navBar">
-            <p className="navbar-brand">ORBY-project</p>
+            <p className={theme_navbar_brand} id="navBar">ORBY-project</p>
 
             <Example /> 
 
@@ -147,33 +153,33 @@ class NavBar extends Component{
 
             <div className={classCollapse}>
               <ul className="navbar-nav ml-auto">
-                <li className="nav-item">
+                <li className="nav-item" id="navBar">
                   <Link onClick={this.toggleNavbar} 
-                        className="nav-link" 
+                        className={theme_navbar_link}
                         to="/about">{strings["navBarAbout"]}
                   </Link>
                 </li>
                 <li className="nav-item">
                   <Link onClick={this.toggleNavbar} 
-                        className="nav-link" 
+                        className={theme_navbar_link}
                         to="/minigames">{strings["navBarMiniGames"]}
                   </Link>
                 </li>
                 <li className="nav-item">
                   <Link onClick={this.toggleNavbar} 
-                        className="nav-link" 
+                        className={theme_navbar_link} 
                         to="/timeshow">{strings["navBarTimeShow"]}
                   </Link>
                 </li> 
                 <li className="nav-item">
                   <Link onClick={this.toggleNavbar} 
-                        className="nav-link" 
+                        className={theme_navbar_link} 
                         to="/utils">{strings["navBarUtils"]}
                   </Link>
                 </li>        
                 <li className="nav-item">
                   <Link onClick={this.toggleNavbar}
-                        className="nav-link" 
+                        className={theme_navbar_link}
                         to="/sunny">{strings["navBarSunny"]}
                   </Link>
                 </li>      
@@ -183,13 +189,13 @@ class NavBar extends Component{
             <div className="menu-navbar">
               <ul className={classCustomer}>
                 <li className="nav-item">
-                  <Link className="nav-link" 
+                  <Link className={theme_navbar_link} 
                         to="/utils/customers">
                         {strings["navBarCustumers"]}
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" 
+                  <Link className={theme_navbar_link}
                         to="/utils/customers/customer">
                         {strings["navBarCreateCustumer"]}
                   </Link>
@@ -200,13 +206,13 @@ class NavBar extends Component{
             <div className="menu-navbar">
               <ul className={classGames}>
                 <li className="nav-item">
-                  <Link className="nav-link" 
+                  <Link className={theme_navbar_link}
                         to="/minigames/tictacgame/">
                         {strings["navBarTcTacGame"]}
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" 
+                  <Link className={theme_navbar_link}
                         to="/minigames/takeballgame/">
                         {strings["navBarTakeCrazyBall"]}
                   </Link>
@@ -235,7 +241,8 @@ class NavBar extends Component{
 
 const mapStateToProps = (state) => {
   return { 
-    navBarCollapse: state.navBarCollapse
+    navBarCollapse: state.navBarCollapse,
+    theme: state.theme
   };
 }
 

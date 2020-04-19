@@ -7,6 +7,9 @@
 }
 
 .blackTheme {
-	background-color: #17002e;
-	color: #e0c2ff;
+	background-color: #17002e !important;
+	color: #e0c2ff !important;
+}
+a { 
+
 }

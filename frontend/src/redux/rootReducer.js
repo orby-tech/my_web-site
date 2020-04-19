@@ -2,6 +2,7 @@ import  { combineReducers} from 'redux'
 import  { createMultilanguageReducer } from "redux-multilanguage";
 
 import  { NAVBAR_COLLAPSE,
+					CHANGE_THEME,
 					ABOUT_CONTACTS_COLLAPSE } from './types'
 
 //ABOUT BLOCK
@@ -26,11 +27,18 @@ function navBarReducer(state = true, action) {
 	}	
 	return state	
 }
+function changeThemeReducer(state = true, action){
+	if (action.type === CHANGE_THEME) {
+		return !state
+	}
+	return state
+}
 
 export const rootReducer = combineReducers({
   aboutInfo: aboutInfoReducer,
   aboutContacts: aboutContactsReducer,
   navBarCollapse: navBarReducer,
+  theme: changeThemeReducer,
   multilanguage: createMultilanguageReducer({ currentLanguageCode: "en" })
 
 })
