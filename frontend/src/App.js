@@ -12,6 +12,7 @@ import  CustomersList from './Utils/CustomersList'
 import  CustomerCreateUpdate  from './Utils/CustomerCreateUpdate'
 import  RobotSunny  from './robotSunny'
 import  WrappedTimeShow from './timeShow'
+import  BlackTheme from './BlackThemeButton'
 
 import  { Provider } from 'react-redux'
 import  { applyMiddleware, createStore } from 'redux'
@@ -29,6 +30,7 @@ import './css/eyes.css';
 import './css/takeBall.css';
 import './css/about.css';
 import './css/robotSunny.css';
+import './css/dark.css';
 
 import {
   multilanguage
@@ -37,12 +39,9 @@ import {
 
 const NaVLayout = () => (
   <div>
-    <div className="cont-eyes">
       <Route exact component={Eyes} />
-    </div>
-    <div>  
       <Route path="/:id" component={WrappedNavBar}/>
-    </div>
+      <Route exact component={BlackTheme} />
   </div>
 )
 const store = createStore(rootReducer,   

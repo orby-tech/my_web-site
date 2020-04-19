@@ -128,7 +128,7 @@ class NavBar extends Component{
         </div>
 
         <div className="container">          
-          <nav className="navbar navbar-light bg-light transparent-nav">
+          <nav className="navbar navbar-light transparent-nav" id="navBar">
             <p className="navbar-brand">ORBY-project</p>
 
             <Example /> 
