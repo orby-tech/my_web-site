@@ -224,7 +224,7 @@ class NavBar extends Component{
               <ul className={classUtils}>
 
                 <li className="nav-item">
-                  <Link className="nav-link" 
+                  <Link className={theme_navbar_link}
                         to="/utils/calculator/">
                         {strings["navBarCalculator"]}
                   </Link>

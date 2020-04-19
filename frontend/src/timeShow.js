@@ -107,6 +107,9 @@ class TimeShow extends React.Component {
 			day_for_switch -= 7
 		}
 		switch(day_for_switch){
+				case 0:
+				day = strings["Sunday"];
+				break;
 			case 1:
 				day = strings["Monday"];
 				break;

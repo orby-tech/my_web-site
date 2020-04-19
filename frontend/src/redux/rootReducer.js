@@ -5,9 +5,23 @@ import  { NAVBAR_COLLAPSE,
 					CHANGE_THEME,
 					ABOUT_CONTACTS_COLLAPSE } from './types'
 
-//ABOUT BLOCK
+//initial state
+
+function aboutInfo () {
+	try  {
+		console.log(localStorage.getItem(aboutInfo))
+		return localStorage.getItem(aboutInfo)
+	} 
+	catch {
+		return true
+	}
+}
+
+
 function aboutInfoReducer(state = false, action) {
+	console.log(localStorage.aboutInfo)
 	if (action.type === 'ABOUT_INFO_COLLAPSE') {
+		localStorage.aboutInfo = !state
 		return !state
 	}	
 	return state	
