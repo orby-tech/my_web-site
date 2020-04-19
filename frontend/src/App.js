@@ -40,13 +40,24 @@ import {
 const NaVLayout = () => (
   <div>
       <Route exact component={Eyes} />
-      <Route path="/:id" component={WrappedNavBar}/>
       <Route exact component={WrappedBlackTheme} />
+      <Route path="/:id" component={WrappedNavBar}/>
+
   </div>
 )
-const store = createStore(rootReducer,   
+
+const persistedState = localStorage.getItem('reduxState') 
+                       ? JSON.parse(localStorage.getItem('reduxState'))
+                       : {}
+
+const store = createStore(rootReducer,
+    persistedState,   
     composeWithDevTools(
     applyMiddleware(thunk, logger)))
+
+store.subscribe(()=>{
+  localStorage.setItem('reduxState', JSON.stringify(store.getState()))
+})
 
 const BaseLayout = () => (
 
