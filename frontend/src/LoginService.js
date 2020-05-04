@@ -4,6 +4,7 @@ import LoginForm from './LoginForm';
 import SignupForm from './SignupForm';
 import './App.css';
 
+import  { connect } from 'react-redux'
 
 
 class App extends Component {
@@ -116,10 +117,12 @@ class App extends Component {
       default:
         form = null;
     }
-
+    let appTheme = !this.props.theme
+    ?"App"
+    :"App blackTheme"
     return (
       <>
-      <div className="App">
+      <div className={appTheme}>
         <Nav
           logged_in={this.state.logged_in}
           display_form={this.display_form}
@@ -136,4 +139,12 @@ class App extends Component {
     );
   }
 }
-export default App;
+const mapStateToProps = (state) => {
+  return { 
+    theme: state.theme
+  };
+}
+
+const WrappedApp = connect(mapStateToProps)(App);
+
+export default WrappedApp;

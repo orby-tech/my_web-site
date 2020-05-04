@@ -21,10 +21,8 @@ class BlackTheme extends Component {
   themeClick() {
     document.body.classList.toggle("blackTheme");
     document.getElementById("navBar").classList.toggle("blackTheme");
-    document.getElementById("navBar").classList.toggle("blackTheme")
     this.setState({dark: !this.state.dark});
     this.props.dispatch(changeTheme());
-
   }
   render() {
   	let solar_img = this.state.dark

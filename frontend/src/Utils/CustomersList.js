@@ -1,6 +1,7 @@
 import  React, { Component } from  'react';
 import  CustomersService  from  './Service';
 
+
 const  customersService  =  new  CustomersService();
 
 class  CustomersList  extends  Component {
@@ -19,6 +20,8 @@ class  CustomersList  extends  Component {
         var  self  =  this;
         customersService.getCustomers().then(function (result) {
             self.setState({ customers:  result.data, nextPageURL:  result.nextlink})
+                    console.log(self.state.customers)
+
         });
     }
     handleDelete(e,pk){

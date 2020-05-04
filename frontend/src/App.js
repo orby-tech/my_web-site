@@ -13,6 +13,7 @@ import  CustomerCreateUpdate  from './Utils/CustomerCreateUpdate'
 import  RobotSunny  from './robotSunny'
 import  WrappedTimeShow from './timeShow'
 import  WrappedBlackTheme from './BlackThemeButton'
+import  Start from './Start'
 
 import  { Provider } from 'react-redux'
 import  { applyMiddleware, createStore } from 'redux'
@@ -57,12 +58,13 @@ const store = createStore(rootReducer,
 
 store.subscribe(()=>{
   localStorage.setItem('reduxState', JSON.stringify(store.getState()))
-})
+});
 
 const BaseLayout = () => (
 
 
     <div className="container contents">
+      <Route path="/" exact component={Start} />
       <Route path="/about" exact component={WrappedAbout} />
       <Route path="/minigames/" exact component={TakeBall} />
       <Route path="/utils/" exact component={CustomersList} />

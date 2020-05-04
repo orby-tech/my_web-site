@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
+import  { connect } from 'react-redux'
 
 class SignupForm extends React.Component {
   state = {
@@ -32,8 +33,13 @@ class SignupForm extends React.Component {
     }
   }
   render() {
+    let signTheme = this.props.theme 
+    ? ""
+    : "blackTheme"
+
     return (
-      <>
+      <div className={signTheme}>
+
         <h4>Sign Up</h4>
         <label htmlFor="first_name">nik</label>
         <input
@@ -60,12 +66,18 @@ class SignupForm extends React.Component {
           onClick={this.signup}>
           Sign up
         </Button>
-      </>
+      </div>
     );
   }
 }
+const mapStateToProps = (state) => {
+  return { 
+    theme: state.theme
+  };
+}
 
-export default SignupForm;
+const WrappedSignupForm = connect(mapStateToProps)(SignupForm);
+export default WrappedSignupForm;
 
 SignupForm.propTypes = {
   handle_signup: PropTypes.func.isRequired
