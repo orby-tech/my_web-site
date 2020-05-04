@@ -117,9 +117,9 @@ class App extends Component {
       default:
         form = null;
     }
-    let appTheme = !this.props.theme
-    ?"App"
-    :"App blackTheme"
+    let appTheme = this.props.theme
+              ? "App"
+              : "App blackTheme"
     return (
       <>
       <div className={appTheme}>

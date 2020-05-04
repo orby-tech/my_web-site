@@ -114,10 +114,10 @@ class NavBar extends Component{
     
     const { strings, currentLanguageCode } = this.props;
 
-    const theme_navbar_brand = !this.props.theme 
+    const theme_navbar_brand = this.props.theme 
                   ? "navbar-brand"
                   : "navbar-brand blackTheme"
-    const theme_navbar_link = !this.props.theme 
+    const theme_navbar_link = this.props.theme 
                   ? "nav-link"
                   : "nav-link blackTheme"
 

@@ -13,19 +13,25 @@ class BlackTheme extends Component {
   constructor(props) {
 	  super(props);
 	  this.state = {
-	  	dark: true
+	  	dark: this.props.theme
 	  }
  	  this.themeClick = this.themeClick.bind(this);
   };
-
+  componentDidMount(){
+    if(!this.props.theme){
+      document.getElementById("navBar").classList.toggle("blackTheme");
+      document.body.classList.toggle("blackTheme");
+    }
+  }
   themeClick() {
-    document.body.classList.toggle("blackTheme");
-    document.getElementById("navBar").classList.toggle("blackTheme");
-    this.setState({dark: !this.state.dark});
+    if(document.getElementById("navBar").classList.contains("blackTheme") !== this.props.theme){
+      document.getElementById("navBar").classList.toggle("blackTheme");
+      document.body.classList.toggle("blackTheme");
+    }
     this.props.dispatch(changeTheme());
   }
   render() {
-  	let solar_img = this.state.dark
+  	let solar_img = this.props.theme
   									? solar
   									: solar_yellow
     return (
