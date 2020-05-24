@@ -91,6 +91,12 @@ class About extends Component{
 
       		</ul>
       	</div>
+			<hr/>
+
+				<h4> {strings["aboutMyProgects"]} </h4>
+				<a href="tutorials.getteam.space">{strings["aboutMyTutorialsProgect"]}</a>				
+				<br/>
+				<a href="getteam.space">{strings["aboutMySocialProgect"]}</a>
 
 			</div>
 		);
